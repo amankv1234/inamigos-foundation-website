@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { Heart, Users, Globe2, TrendingUp } from "lucide-react"
 import { AnimatedCounter } from "@/components/shared/AnimatedCounter"
 
@@ -19,9 +20,18 @@ const itemVariant = {
 
 export function StatsSection() {
   return (
-    <section className="py-24 bg-muted/50 border-y border-border/50 relative overflow-hidden">
-      {/* Subtle background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+    <section className="cinematic-section relative overflow-hidden border-y border-white/10 py-24">
+      <div className="absolute inset-0">
+        <Image
+          src="/ngo website photo/comunity.avif"
+          alt="Community background"
+          fill
+          className="object-cover opacity-[0.08]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/88 to-background" />
+      </div>
+
+      <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
@@ -32,16 +42,16 @@ export function StatsSection() {
           variants={containerVariant}
         >
           {[
-            { icon: Users, target: 50000, suffix: "+", label: "Lives Impacted", color: "from-blue-500/20 to-cyan-500/20" },
-            { icon: Globe2, target: 120, suffix: "+", label: "Communities Reached", color: "from-emerald-500/20 to-green-500/20" },
-            { icon: Heart, target: 2, prefix: "$", suffix: "M+", label: "Funds Raised", color: "from-pink-500/20 to-rose-500/20" },
-            { icon: TrendingUp, target: 350, suffix: "+", label: "Active Volunteers", color: "from-purple-500/20 to-violet-500/20" },
+            { icon: Users, target: 50000, suffix: "+", label: "Lives Impacted", color: "from-primary/24 to-[#c8a65a]/18" },
+            { icon: Globe2, target: 120, suffix: "+", label: "Communities Reached", color: "from-[#b6d86a]/24 to-primary/14" },
+            { icon: Heart, target: 2, prefix: "$", suffix: "M+", label: "Funds Raised", color: "from-[#d5b46d]/24 to-primary/16" },
+            { icon: TrendingUp, target: 350, suffix: "+", label: "Active Volunteers", color: "from-primary/22 to-[#826b35]/18" },
           ].map((item, index) => (
             <motion.div 
               key={index} 
               variants={itemVariant} 
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="glass dark:glass-dark p-8 rounded-3xl flex flex-col items-center gap-4 cursor-default group"
+              className="glass dark:glass-dark group flex cursor-default flex-col items-center gap-4 rounded-3xl p-8 transition-colors hover:border-primary/24"
             >
               <div className={`p-4 bg-gradient-to-br ${item.color} rounded-2xl text-primary group-hover:scale-110 transition-transform duration-300`}>
                 <item.icon className="w-8 h-8" />
@@ -57,4 +67,3 @@ export function StatsSection() {
     </section>
   )
 }
-

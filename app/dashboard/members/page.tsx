@@ -70,7 +70,7 @@ export default function MembersPage() {
                     </span>
                   </td>
                   <td className="py-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${member.status === 'Active' ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-muted text-muted-foreground'}`}>
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${member.status === "Active" ? "bg-primary/10 text-primary border border-primary/20" : "bg-muted text-muted-foreground border border-border"}`}>
                       {member.status}
                     </span>
                   </td>

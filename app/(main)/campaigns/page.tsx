@@ -5,14 +5,15 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Search, Filter, ArrowRight } from "lucide-react"
 import { buttonVariants } from "@/components/ui/button"
 import Link from "next/link"
+import Image from "next/image"
 
 const campaigns = [
-  { id: 1, title: "Clean Water Initiative", category: "Health", raised: 45000, goal: 100000, desc: "Building wells in remote villages to provide safe, clean drinking water." },
-  { id: 2, title: "Education for All", category: "Education", raised: 80000, goal: 120000, desc: "Providing school supplies and building classrooms for underprivileged children." },
-  { id: 3, title: "Emergency Relief Fund", category: "Emergency", raised: 150000, goal: 200000, desc: "Rapid response funding for natural disasters and humanitarian crises." },
-  { id: 4, title: "Green Earth Project", category: "Environment", raised: 25000, goal: 50000, desc: "Planting trees and promoting sustainable farming practices." },
-  { id: 5, title: "Women Empowerment", category: "Social", raised: 60000, goal: 80000, desc: "Vocational training and micro-loans for women entrepreneurs." },
-  { id: 6, title: "Youth Mentorship", category: "Education", raised: 10000, goal: 30000, desc: "Connecting successful professionals with at-risk youth." },
+  { id: 1, title: "Clean Water Initiative", category: "Health", raised: 45000, goal: 100000, desc: "Building wells in remote villages to provide safe, clean drinking water.", image: "/ngo website photo/comunity 1.avif" },
+  { id: 2, title: "Education for All", category: "Education", raised: 80000, goal: 120000, desc: "Providing school supplies and building classrooms for underprivileged children.", image: "/ngo website photo/education 1.avif" },
+  { id: 3, title: "Emergency Relief Fund", category: "Emergency", raised: 150000, goal: 200000, desc: "Rapid response funding for natural disasters and humanitarian crises.", image: "/ngo website photo/help  hand.avif" },
+  { id: 4, title: "Green Earth Project", category: "Environment", raised: 25000, goal: 50000, desc: "Planting trees and promoting sustainable farming practices.", image: "/ngo website photo/rular education.avif" },
+  { id: 5, title: "Women Empowerment", category: "Social", raised: 60000, goal: 80000, desc: "Vocational training and micro-loans for women entrepreneurs.", image: "/ngo website photo/social work 12.avif" },
+  { id: 6, title: "Youth Mentorship", category: "Education", raised: 10000, goal: 30000, desc: "Connecting successful professionals with at-risk youth.", image: "/ngo website photo/education 2.avif" },
 ]
 
 const categories = ["All", "Education", "Health", "Environment", "Social", "Emergency"]
@@ -77,14 +78,19 @@ export default function CampaignsPage() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
                 key={campaign.id} 
-                className="glass dark:glass-dark rounded-3xl overflow-hidden flex flex-col"
+                className="glass dark:glass-dark rounded-3xl overflow-hidden flex flex-col border border-border/50 shadow-lg hover:shadow-primary/5 transition-all"
               >
-                <div className="h-48 bg-muted relative">
+                <div className="h-48 bg-muted relative overflow-hidden">
+                  <Image
+                    src={campaign.image}
+                    alt={campaign.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className="absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-primary z-10">
                     {campaign.category}
                   </div>
-                  {/* Image Placeholder */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-secondary/10" />
                 </div>
                 <div className="p-6 flex-1 flex flex-col">
                   <h3 className="font-bold text-xl mb-2">{campaign.title}</h3>
@@ -125,3 +131,4 @@ export default function CampaignsPage() {
     </div>
   )
 }
+

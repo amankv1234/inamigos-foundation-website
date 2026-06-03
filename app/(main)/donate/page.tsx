@@ -2,8 +2,30 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { Heart, ShieldCheck, Gift } from "lucide-react"
 import { Button } from "@/components/ui/button"
+
+const impactItems = [
+  {
+    icon: Gift,
+    title: "Provides Clean Water",
+    desc: "A $25 donation can provide a family with clean, safe drinking water for an entire month.",
+    image: "/ngo website photo/children.avif",
+  },
+  {
+    icon: Heart,
+    title: "Funds Education",
+    desc: "A $50 donation supplies a rural classroom with essential learning materials for a year.",
+    image: "/ngo website photo/education 4.avif",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Emergency Relief",
+    desc: "A $100 donation delivers emergency food and medical kits to disaster-struck regions instantly.",
+    image: "/ngo website photo/donation 4.avif",
+  },
+]
 
 export default function DonatePage() {
   const [amount, setAmount] = useState<number | null>(50)
@@ -83,7 +105,7 @@ export default function DonatePage() {
             </Button>
 
             <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-              <ShieldCheck className="w-4 h-4 text-green-500" />
+              <ShieldCheck className="w-4 h-4 text-primary" />
               <span>Secure, encrypted transaction</span>
             </div>
           </motion.div>
@@ -93,43 +115,36 @@ export default function DonatePage() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex flex-col justify-center space-y-8"
+            className="flex flex-col justify-center space-y-6"
           >
             <h2 className="text-3xl font-bold">Your Impact Matters</h2>
             
-            <div className="space-y-6">
-              <div className="flex gap-4 items-start">
-                <div className="bg-primary/10 p-3 rounded-xl text-primary mt-1">
-                  <Gift className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-1">Provides Clean Water</h3>
-                  <p className="text-muted-foreground text-sm">A $25 donation can provide a family with clean, safe drinking water for an entire month.</p>
-                </div>
-              </div>
-              
-              <div className="flex gap-4 items-start">
-                <div className="bg-primary/10 p-3 rounded-xl text-primary mt-1">
-                  <Heart className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-1">Funds Education</h3>
-                  <p className="text-muted-foreground text-sm">A $50 donation supplies a rural classroom with essential learning materials for a year.</p>
-                </div>
-              </div>
-              
-              <div className="flex gap-4 items-start">
-                <div className="bg-primary/10 p-3 rounded-xl text-primary mt-1">
-                  <ShieldCheck className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-1">Emergency Relief</h3>
-                  <p className="text-muted-foreground text-sm">A $100 donation delivers emergency food and medical kits to disaster-struck regions instantly.</p>
-                </div>
-              </div>
+            <div className="space-y-4">
+              {impactItems.map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 + i * 0.15 }}
+                  className="flex gap-4 items-center glass dark:glass-dark rounded-2xl p-4 border border-border/50 group overflow-hidden"
+                >
+                  <div className="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 shadow-md">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-base mb-0.5">{item.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-snug">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
 
-            <div className="glass dark:glass-dark p-6 rounded-2xl mt-4 border border-primary/20 bg-primary/5">
+            <div className="glass dark:glass-dark p-6 rounded-2xl border border-primary/20 bg-primary/5">
               <p className="font-medium italic text-foreground/80">
                 &quot;We pledge that 90% of all public donations go directly toward funding our charitable programs and initiatives.&quot;
               </p>

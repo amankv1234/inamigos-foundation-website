@@ -13,9 +13,9 @@ const campaigns = [
 ]
 
 const statusColors: Record<string, string> = {
-  Active: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20",
-  Paused: "bg-amber-500/10 text-amber-500 border-amber-500/20",
-  Completed: "bg-blue-500/10 text-blue-500 border-blue-500/20",
+  Active: "bg-primary/10 text-primary border-primary/20",
+  Paused: "bg-secondary/20 text-secondary-foreground border-secondary/30",
+  Completed: "bg-white/10 text-foreground border-white/15",
   Draft: "bg-muted text-muted-foreground border-border",
 }
 

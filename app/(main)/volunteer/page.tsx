@@ -1,8 +1,15 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { CheckCircle2, HandHeart, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
+
+const volunteerImages = [
+  { src: "/ngo website photo/volenteer 1.avif", alt: "Volunteer helping community" },
+  { src: "/ngo website photo/volenteer 2.avif", alt: "Volunteer in the field" },
+  { src: "/ngo website photo/volenteer 3.avif", alt: "Volunteer team" },
+]
 
 export default function VolunteerPage() {
   return (
@@ -39,6 +46,27 @@ export default function VolunteerPage() {
                 </div>
               ))}
             </div>
+
+            {/* Volunteer Image Strip */}
+            <div className="grid grid-cols-3 gap-3 mt-6">
+              {volunteerImages.map((img, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 + i * 0.15 }}
+                  className="relative h-28 rounded-2xl overflow-hidden group shadow-lg"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-colors duration-300" />
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
           <motion.div 
@@ -70,10 +98,10 @@ export default function VolunteerPage() {
               <div className="space-y-2">
                 <label className="text-sm font-medium text-foreground">Area of Interest</label>
                 <select className="w-full bg-background/50 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors text-foreground">
-                  <option>Education & Teaching</option>
+                  <option>Education &amp; Teaching</option>
                   <option>Event Organization</option>
-                  <option>Medical & Healthcare</option>
-                  <option>Fundraising & Marketing</option>
+                  <option>Medical &amp; Healthcare</option>
+                  <option>Fundraising &amp; Marketing</option>
                   <option>General Support</option>
                 </select>
               </div>

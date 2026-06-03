@@ -8,12 +8,12 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <div className="cinematic-section flex min-h-screen flex-col">
       <Navbar />
       <PageTransition>
         {children}
       </PageTransition>
       <Footer />
-    </>
+    </div>
   );
 }

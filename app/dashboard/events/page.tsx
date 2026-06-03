@@ -11,8 +11,8 @@ const events = [
 ]
 
 const statusColors: Record<string, string> = {
-  Upcoming: "bg-blue-500/10 text-blue-500 border-blue-500/20",
-  Completed: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20",
+  Upcoming: "bg-secondary/20 text-secondary-foreground border-secondary/30",
+  Completed: "bg-primary/10 text-primary border-primary/20",
   Cancelled: "bg-destructive/10 text-destructive border-destructive/20",
 }
 
@@ -74,7 +74,7 @@ export default function EventsManagementPage() {
               <div className="flex items-center gap-2"><Calendar className="w-4 h-4 text-primary" /> {event.date}</div>
               <div className="flex items-center gap-2"><Clock className="w-4 h-4 text-primary" /> {event.time}</div>
               <div className="flex items-center gap-2"><MapPin className="w-4 h-4 text-primary" /> {event.location}</div>
-              <div className="flex items-center gap-2"><Users className="w-4 h-4 text-primary" /> {event.attendees} registered {event.spots > 0 && `· ${event.spots} spots left`}</div>
+              <div className="flex items-center gap-2"><Users className="w-4 h-4 text-primary" /> {event.attendees} registered {event.spots > 0 && `- ${event.spots} spots left`}</div>
             </div>
             <div className="flex gap-2 pt-2 border-t border-border/50">
               <button className="flex-1 py-2 text-sm font-medium rounded-xl bg-muted/80 hover:bg-muted transition-colors">Edit</button>

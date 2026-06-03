@@ -7,14 +7,14 @@ const posts = [
   { id: 1, title: "How Clean Water Changed Everything in Mwanza", author: "Elena R.", category: "Health", status: "Published", date: "2026-05-20", views: 1420 },
   { id: 2, title: "Meet Our 2026 Volunteer of the Year", author: "Sarah J.", category: "People", status: "Published", date: "2026-05-15", views: 865 },
   { id: 3, title: "The Green Earth Project: 6-Month Update", author: "Admin", category: "Environment", status: "Draft", date: "2026-06-01", views: 0 },
-  { id: 4, title: "Annual Report 2025 – Key Highlights", author: "David C.", category: "Report", status: "Published", date: "2026-04-30", views: 3210 },
+  { id: 4, title: "Annual Report 2025 - Key Highlights", author: "David C.", category: "Report", status: "Published", date: "2026-04-30", views: 3210 },
   { id: 5, title: "Why Youth Mentorship is Our Most Impactful Program", author: "Elena R.", category: "Education", status: "Review", date: "2026-06-02", views: 0 },
 ]
 
 const statusColors: Record<string, string> = {
-  Published: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20",
+  Published: "bg-primary/10 text-primary border-primary/20",
   Draft: "bg-muted text-muted-foreground border-border",
-  Review: "bg-amber-500/10 text-amber-500 border-amber-500/20",
+  Review: "bg-secondary/20 text-secondary-foreground border-secondary/30",
 }
 
 export default function BlogManagementPage() {
@@ -91,7 +91,7 @@ export default function BlogManagementPage() {
                     </span>
                   </td>
                   <td className="py-4 text-sm text-muted-foreground">{post.date}</td>
-                  <td className="py-4 text-sm text-muted-foreground">{post.views > 0 ? post.views.toLocaleString() : "—"}</td>
+                  <td className="py-4 text-sm text-muted-foreground">{post.views > 0 ? post.views.toLocaleString() : "-"}</td>
                   <td className="py-4 text-right">
                     <div className="flex justify-end gap-2">
                       <button className="p-2 text-muted-foreground hover:text-primary transition-colors"><Eye className="w-4 h-4" /></button>

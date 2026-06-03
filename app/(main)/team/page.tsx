@@ -1,15 +1,16 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { Link2, MessageCircle, Mail } from "lucide-react"
 
 const team = [
-  { name: "Alex Mercer", role: "Founder & CEO", bio: "Former tech executive turned philanthropist, dedicated to bridging the global inequality gap." },
-  { name: "Sarah Jenkins", role: "Chief Operating Officer", bio: "15+ years experience in managing international development programs and NGO operations." },
-  { name: "Dr. Aisha Rahman", role: "Head of Health Initiatives", bio: "Public health expert leading our clean water and rural clinic programs across three continents." },
-  { name: "David Chen", role: "Director of Education", bio: "Passionate educator focused on digital literacy and building sustainable school infrastructure." },
-  { name: "Elena Rodriguez", role: "Community Outreach Lead", bio: "Grassroots organizer specializing in empowering local leaders and women entrepreneurs." },
-  { name: "Marcus Johnson", role: "CFO", bio: "Ensuring 100% financial transparency and maximizing the impact of every donated dollar." },
+  { name: "Alex Mercer",       role: "Founder & CEO",              bio: "Former tech executive turned philanthropist, dedicated to bridging the global inequality gap.",                               image: "/ngo website photo/social work.avif" },
+  { name: "Sarah Jenkins",     role: "Chief Operating Officer",     bio: "15+ years experience in managing international development programs and NGO operations.",                                    image: "/ngo website photo/comunity.avif" },
+  { name: "Dr. Aisha Rahman",  role: "Head of Health Initiatives",  bio: "Public health expert leading our clean water and rural clinic programs across three continents.",                            image: "/ngo website photo/education 3.avif" },
+  { name: "David Chen",        role: "Director of Education",       bio: "Passionate educator focused on digital literacy and building sustainable school infrastructure.",                            image: "/ngo website photo/rular education.avif" },
+  { name: "Elena Rodriguez",   role: "Community Outreach Lead",     bio: "Grassroots organizer specializing in empowering local leaders and women entrepreneurs.",                                     image: "/ngo website photo/comunity 1.avif" },
+  { name: "Marcus Johnson",    role: "CFO",                         bio: "Ensuring 100% financial transparency and maximizing the impact of every donated dollar.",                                   image: "/ngo website photo/social work 12.avif" },
 ]
 
 export default function TeamPage() {
@@ -32,28 +33,35 @@ export default function TeamPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="glass dark:glass-dark rounded-3xl overflow-hidden group text-center p-8 flex flex-col items-center"
+              className="glass dark:glass-dark rounded-3xl overflow-hidden group text-center flex flex-col items-center border border-border/50 shadow-lg hover:shadow-primary/10 transition-all duration-300"
             >
-              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 mb-6 border-4 border-background overflow-hidden relative">
-                {/* Image Placeholder */}
-                <div className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-primary/30">
-                  {member.name.charAt(0)}
-                </div>
+              {/* Team member photo */}
+              <div className="relative w-full h-56 overflow-hidden">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               </div>
-              <h3 className="text-2xl font-bold mb-1">{member.name}</h3>
-              <p className="text-primary font-medium text-sm mb-4">{member.role}</p>
-              <p className="text-muted-foreground text-sm mb-6 flex-1">{member.bio}</p>
-              
-              <div className="flex gap-4 mt-auto">
-                <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
-                  <Link2 className="w-4 h-4" />
-                </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
-                  <MessageCircle className="w-4 h-4" />
-                </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
-                  <Mail className="w-4 h-4" />
-                </a>
+
+              <div className="p-6 flex flex-col items-center flex-1">
+                <h3 className="text-2xl font-bold mb-1">{member.name}</h3>
+                <p className="text-primary font-medium text-sm mb-4">{member.role}</p>
+                <p className="text-muted-foreground text-sm mb-6 flex-1">{member.bio}</p>
+                
+                <div className="flex gap-4 mt-auto">
+                  <a href="#" aria-label="LinkedIn" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+                    <Link2 className="w-4 h-4" />
+                  </a>
+                  <a href="#" aria-label="Message" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+                    <MessageCircle className="w-4 h-4" />
+                  </a>
+                  <a href="#" aria-label="Email" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+                    <Mail className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </motion.div>
           ))}

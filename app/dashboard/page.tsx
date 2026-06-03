@@ -32,7 +32,7 @@ export default function DashboardOverview() {
           <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="glass dark:glass-dark p-6 rounded-2xl">
             <div className="flex justify-between items-start mb-4">
               <div className="p-3 bg-primary/10 rounded-xl text-primary"><kpi.icon className="w-5 h-5" /></div>
-              <span className="flex items-center text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded-full">
+              <span className="flex items-center rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
                 {kpi.trend} <ArrowUpRight className="w-3 h-3 ml-1" />
               </span>
             </div>
@@ -50,19 +50,19 @@ export default function DashboardOverview() {
               <AreaChart data={areaData}>
                 <defs>
                   <linearGradient id="colorDonations" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#a6cf37" stopOpacity={0.34}/>
+                    <stop offset="95%" stopColor="#a6cf37" stopOpacity={0}/>
                   </linearGradient>
                   <linearGradient id="colorVolunteers" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#c8a65a" stopOpacity={0.28}/>
+                    <stop offset="95%" stopColor="#c8a65a" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <XAxis dataKey="name" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
                 <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `$${value}`} />
-                <Tooltip contentStyle={{ borderRadius: "12px", border: "none", boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)" }} />
-                <Area type="monotone" dataKey="donations" stroke="#10b981" fillOpacity={1} fill="url(#colorDonations)" />
-                <Area type="monotone" dataKey="volunteers" stroke="#3b82f6" fillOpacity={1} fill="url(#colorVolunteers)" />
+                <Tooltip contentStyle={{ borderRadius: "12px", border: "1px solid rgba(255,255,255,0.12)", background: "rgba(13,16,8,0.92)", color: "#f5f3e8", boxShadow: "0 18px 45px rgb(0 0 0 / 0.28)" }} />
+                <Area type="monotone" dataKey="donations" stroke="#a6cf37" fillOpacity={1} fill="url(#colorDonations)" />
+                <Area type="monotone" dataKey="volunteers" stroke="#c8a65a" fillOpacity={1} fill="url(#colorVolunteers)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>

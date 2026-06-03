@@ -21,14 +21,14 @@ export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
-    <header className="fixed top-0 w-full z-50 transition-all duration-300 py-4 px-4 sm:px-6 lg:px-8">
+    <header className="fixed top-0 w-full z-50 px-4 py-4 transition-all duration-300 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <nav className="glass rounded-2xl px-6 py-3 flex items-center justify-between">
+        <nav className="glass flex items-center justify-between rounded-[1.25rem] px-5 py-3">
           <Link href="/" className="flex items-center gap-2 group">
             <motion.div
               whileHover={{ scale: 1.1, rotate: 10 }}
               whileTap={{ scale: 0.9 }}
-              className="bg-primary/10 p-2 rounded-xl text-primary"
+              className="rounded-xl border border-primary/20 bg-primary/[0.12] p-2 text-primary shadow-lg shadow-primary/10"
             >
               <Heart className="w-5 h-5 fill-current" />
             </motion.div>
@@ -45,14 +45,14 @@ export function Navbar() {
                     <Link
                       href={link.path}
                       className={`relative px-4 py-2 rounded-full text-sm font-medium transition-colors hover:text-primary ${
-                        isActive ? "text-primary" : "text-muted-foreground"
+                        isActive ? "text-primary" : "text-white/[0.72]"
                       }`}
                     >
                       {link.name}
                       {isActive && (
                         <motion.div
                           layoutId="navbar-indicator"
-                          className="absolute inset-0 bg-primary/10 rounded-full -z-10"
+                          className="absolute inset-0 bg-primary/[0.12] rounded-full -z-10"
                           transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                         />
                       )}
@@ -61,9 +61,9 @@ export function Navbar() {
                 )
               })}
             </ul>
-            <div className="flex items-center gap-4 border-l border-border pl-4">
+            <div className="flex items-center gap-4 border-l border-white/[0.12] pl-4">
               <ThemeToggle />
-              <Link href="/donate" className={buttonVariants({ className: "rounded-full px-6 shadow-lg shadow-primary/20" })}>
+              <Link href="/donate" className={buttonVariants({ className: "rounded-full px-6" })}>
                 Donate Now
               </Link>
             </div>
@@ -74,7 +74,7 @@ export function Navbar() {
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-foreground"
+              className="rounded-full p-2 text-foreground transition-colors hover:bg-white/10"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -87,7 +87,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden absolute top-20 left-4 right-4 glass rounded-2xl p-4 flex flex-col gap-4 shadow-xl"
+            className="glass absolute left-4 right-4 top-20 flex flex-col gap-4 rounded-2xl p-4 shadow-xl md:hidden"
           >
             {navLinks.map((link) => (
               <Link
@@ -96,8 +96,8 @@ export function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={`px-4 py-3 rounded-xl text-base font-medium ${
                   pathname === link.path
-                    ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:bg-muted hover:text-primary"
+                    ? "bg-primary/[0.12] text-primary"
+                    : "text-white/[0.72] hover:bg-white/10 hover:text-primary"
                 }`}
               >
                 {link.name}
