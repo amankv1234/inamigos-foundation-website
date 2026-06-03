@@ -1,11 +1,11 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, type Variants } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Users, GraduationCap, Handshake, Heart, Sparkles } from "lucide-react"
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
   show: (delay = 0) => ({
     opacity: 1,
@@ -14,7 +14,7 @@ const fadeUp = {
   }),
 }
 
-const fadeIn = {
+const fadeIn: Variants = {
   hidden: { opacity: 0 },
   show: (delay = 0) => ({
     opacity: 1,
